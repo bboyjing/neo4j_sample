@@ -25,6 +25,7 @@ public class LoopDataService {
     private GraphDatabaseService graphDatabaseService;
 
     /**
+     * 核心 api
      * 遍历John看过的电影
      */
     @Transactional
@@ -48,6 +49,7 @@ public class LoopDataService {
     }
 
     /**
+     * 核心 api
      * 遍历John的朋友喜欢而John还没有看过的电影
      */
     @Transactional
@@ -73,7 +75,7 @@ public class LoopDataService {
     }
 
     /**
-     * 利用核心Api遍历数据
+     * 利用遍历Api遍历数据
      * Evaluators.atDepth(2)列出深度为2的节点，userJohn节点的深度为0
      * Note that we set the uniqueness to Uniqueness.NODE_PATH as we want to be able to revisit the same node dureing the traversal, but not the same path.
      * NODE_GLOBAL，全局相同的节点将只遍历一次
@@ -81,7 +83,7 @@ public class LoopDataService {
      * NODE_LEVEL
      */
     @Transactional
-    public void loopDataByApi(Long id){
+    public void loopDataByLoopApi(Long id){
         Node userJohn = graphDatabaseService.getNodeById(id);
         TraversalDescription traversalMoviesFriendsLike = graphDatabaseService.traversalDescription()
                 .relationships(MyRelationshipTypes.IS_FRIEND_OF)

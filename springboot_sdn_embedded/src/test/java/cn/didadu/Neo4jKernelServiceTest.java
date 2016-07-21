@@ -34,7 +34,7 @@ public class Neo4jKernelServiceTest {
 
     @Test
     public void testLoopDataByApi(){
-        loopDataService.loopDataByApi(143l);
+        loopDataService.loopDataByLoopApi(143l);
     }
 
     @Test
