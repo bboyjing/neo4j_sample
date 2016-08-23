@@ -6,6 +6,7 @@ import org.neo4j.ogm.service.Components;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -45,7 +46,9 @@ public class Neo4jConfig extends Neo4jConfiguration {
 
     @Bean
     public GraphDatabaseService graphDatabaseService(){
+        getSessionFactory();
         EmbeddedDriver embeddedDriver = (EmbeddedDriver) Components.driver();
         return embeddedDriver.getGraphDatabaseService();
     }
+
 }
